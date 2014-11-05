@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mbid:</strong>
+  <%= @setlist.mbid %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @setlist.name %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @setlist.artist %>
+</p>
+
+<p>
+  <strong>Plays:</strong>
+  <%= @setlist.plays %>
+</p>
+
+<%= link_to 'Edit', edit_setlist_path(@setlist) %> |
+<%= link_to 'Back', setlists_path %>

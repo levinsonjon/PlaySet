@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mbid: MyString
+  name: MyString
+  artist: MyString
+  plays: 1
+
+two:
+  mbid: MyString
+  name: MyString
+  artist: MyString
+  plays: 1
