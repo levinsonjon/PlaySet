@@ -3,16 +3,13 @@ class SetlistsController < ApplicationController
 
   def index
     @setlists = Setlist.all
-    respond_with(@setlists)
   end
 
   def show
-    respond_with(@setlist)
   end
 
   def new
     @setlist = Setlist.new
-    respond_with(@setlist)
   end
 
   def edit
@@ -20,18 +17,20 @@ class SetlistsController < ApplicationController
 
   def create
     @setlist = Setlist.new(setlist_params)
-    @setlist.save
-    respond_with(@setlist)
+    if @setlist.save
+      redirect_to @setlist 
+    else
+      render :new
+      flash[:error] = "The setlist failed to save."
+    end
   end
 
   def update
     @setlist.update(setlist_params)
-    respond_with(@setlist)
   end
 
   def destroy
     @setlist.destroy
-    respond_with(@setlist)
   end
 
   private
