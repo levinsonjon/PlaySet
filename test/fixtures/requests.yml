@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  setlist: 1
+  user: 1
+  request_count: 1
+
+two:
+  setlist: 1
+  user: 1
+  request_count: 1

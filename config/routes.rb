@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :requests
+
   devise_for :users
   resources :setlists
 
@@ -6,7 +8,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'setlists#index'
+  root 'requests#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

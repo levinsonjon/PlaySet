@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107001614) do
+ActiveRecord::Schema.define(version: 20141107021946) do
+
+  create_table "requests", force: true do |t|
+    t.integer  "setlist"
+    t.integer  "user"
+    t.integer  "request_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "request_text"
+  end
 
   create_table "setlists", force: true do |t|
     t.string   "mbid"

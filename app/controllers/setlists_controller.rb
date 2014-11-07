@@ -1,6 +1,8 @@
 class SetlistsController < ApplicationController
   before_action :set_setlist, only: [:show, :edit, :update, :destroy]
 
+@@mbid = 0
+
   def index
     @setlists = Setlist.all
   end
@@ -18,6 +20,7 @@ class SetlistsController < ApplicationController
   def create
     @setlist = Setlist.new(setlist_params)
     if @setlist.save
+      @@mbid = mbid
       redirect_to @setlist 
     else
       render :new
