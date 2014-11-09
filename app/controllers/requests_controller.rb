@@ -2,11 +2,12 @@ class RequestsController < ApplicationController
   require 'rest_client'
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
-  ArtistName = ""
-  date = ""
-  venueName = ""
-  cityName = ""
-  API_BASE_URL = "http://api.setlist.fm"
+  @ArtistName = ""
+  @date = ""
+  @venueName = ""
+  @cityName = ""
+  @API_BASE_URL = "http://api.setlist.fm"
+  @request_type = "ArtistName"
 
   def index
     @requests = Request.all
@@ -24,28 +25,27 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    uri = "#{API_BASE_URL}"/rest/0.1/search/setlists.json
-    rest_resource = RestClient::Resource.new(uri, ArtistName)
-    @setlists = rest_resource.get
-    @setlists = JSON.parse(setlists, :symbolize_names => true)
+    setlists = RestClient.get "#{@API_BASE_URL}/rest/0.1/search/setlists.json?#{@request_type}=#{@request_text}"
+  #  @setlists = JSON.parse(setlists, :symbolize_names => true)
+  end
 
 
     #@setlist = result.first
     #if true
     #@setlist = setlist.save
-      if user_signed_in?
-        @request = current_user.requests.build(request_params)
-        @request.setlist = @mbid
-        @request.user = current_user
-        @request_count = 0
-      else
-        @request = Request.new(request_params)
-        @request.user_id = -1
-        @request_count = 0
-      end
-    @request.setlist_id = @setlist_id
-    @request.save
-  end
+  #     if user_signed_in?
+  #       @request = current_user.requests.build(request_params)
+  #       @request.setlist = @mbid
+  #       @request.user = current_user
+  #       @request_count = 0
+  #     else
+  #       @request = Request.new(request_params)
+  #       @request.user_id = -1
+  #       @request_count = 0
+  #     end
+  #   @request.setlist_id = @setlist_id
+  #   @request.save
+  # end
 
   def update
     @request.update(request_params)
