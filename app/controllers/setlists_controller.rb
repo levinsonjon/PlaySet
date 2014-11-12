@@ -4,7 +4,7 @@ class SetlistsController < ApplicationController
 @@mbid = 0
 
   def index
-    @setlists = Setlist.all
+    @setlists = Request.all
   end
 
   def show

@@ -1,4 +1,4 @@
 class Setlist < ActiveRecord::Base
-	has_many :requests
-	has_many :users, through: :requests
+	# has_many :requests
+	# has_many :users, through: :requests
 end

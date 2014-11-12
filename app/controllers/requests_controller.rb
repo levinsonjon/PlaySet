@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
   end
 
   def show
+    @request.self
   end
 
   def new
@@ -24,8 +25,12 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params)
-    setlists = RestClient.get "#{@API_BASE_URL}/rest/0.1/search/setlists.json?#{@request_type}=#{@request_text}"
+   @request = Request.new(request_params)
+    # url = 'http://api.setlist.fm/rest/0.1/search/artists.json?artistName=' + @ArtistName
+    # RestClient.getJSON
+
+   # @request = Request.new(request_params)
+    # setlists = RestClient.get "#{@API_BASE_URL}/rest/0.1/search/setlists.json?#{@request_type}=#{@request_text}"
   #  @setlists = JSON.parse(setlists, :symbolize_names => true)
   end
 
@@ -61,6 +66,11 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:request_text)
+      params.require(Track.show, :eventDate, :id, :artist, :venue, :url).permit(:lastUpdated, :tour, :versionID)
     end
+
+    def request
+    @request.show
+    end
+
 end

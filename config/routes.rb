@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'track/index'
+
   resources :requests
 
   devise_for :users
