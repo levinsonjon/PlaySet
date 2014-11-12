@@ -15,7 +15,7 @@ class TrackController < ApplicationController
   end
 
   def create
-   @track = Track.new(track_params)
+   @track = Track.new(:name)
   end
 
   def update
