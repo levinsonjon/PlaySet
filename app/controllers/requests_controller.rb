@@ -2,19 +2,12 @@ class RequestsController < ApplicationController
   require 'rest_client'
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
-  @ArtistName = ""
-  @date = ""
-  @venueName = ""
-  @cityName = ""
-  @API_BASE_URL = "http://api.setlist.fm"
-  @request_type = "ArtistName"
-
   def index
     @requests = Request.all
   end
 
   def show
-    @request.self
+    @request = Request.self
   end
 
   def new
@@ -25,13 +18,17 @@ class RequestsController < ApplicationController
   end
 
   def create
-   @request = Request.new(request_params)
-    # url = 'http://api.setlist.fm/rest/0.1/search/artists.json?artistName=' + @ArtistName
-    # RestClient.getJSON
-
-   # @request = Request.new(request_params)
-    # setlists = RestClient.get "#{@API_BASE_URL}/rest/0.1/search/setlists.json?#{@request_type}=#{@request_text}"
-  #  @setlists = JSON.parse(setlists, :symbolize_names => true)
+    @request = Request.new(request_params)
+    @artist = :artist
+    @response = RestClient.get "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}"
+    puts @response
+    # Setlist.create(@response ("#{url}") => params[:setlist][:url])  
+     if @request.save
+       redirect_to @request
+    else
+      render :new
+      flash[:error] = "Invalid request"
+    end
   end
 
 
@@ -61,16 +58,17 @@ class RequestsController < ApplicationController
   end
 
   private
-    def set_request
-      @request = Request.find(params[:id])
-    end
+    # def set_request
+    #   @request = Request.find(params[:id])
+    # end
 
     def request_params
-      params.require(Track.show, :eventDate, :id, :artist, :venue, :url).permit(:lastUpdated, :tour, :versionID)
+      params.require(:request).permit(:artist)
+     
     end
 
-    def request
-    @request.show
-    end
+    # def request
+    # @request.show
+    # end
 
 end

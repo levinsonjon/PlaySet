@@ -1,13 +1,11 @@
 class SetlistsController < ApplicationController
   before_action :set_setlist, only: [:show, :edit, :update, :destroy]
 
-@@mbid = 0
-
   def index
-    @setlists = Request.all
   end
 
   def show
+    # @setlist = Setlist.find()
   end
 
   def new
@@ -19,9 +17,9 @@ class SetlistsController < ApplicationController
 
   def create
     @setlist = Setlist.new(setlist_params)
-    if @setlist.save
-      @@mbid = mbid
-      redirect_to @setlist 
+     if @setlist.save
+    #   @@mbid = mbid
+       redirect_to @setlist 
     else
       render :new
       flash[:error] = "The setlist failed to save."
@@ -42,6 +40,6 @@ class SetlistsController < ApplicationController
     end
 
     def setlist_params
-      params.require(:setlist).permit(:mbid, :name, :artist, :plays)
+      params.require(:setlist).permit(:tracks, :mbid, :name, :artist, :plays)
     end
 end
