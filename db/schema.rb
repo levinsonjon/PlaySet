@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115201942) do
+ActiveRecord::Schema.define(version: 20141119021840) do
 
   create_table "requests", force: true do |t|
     t.integer  "setlist"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141115201942) do
     t.string   "tracks"
     t.string   "URL"
     t.string   "request_id"
+    t.string   "url_id"
   end
 
   create_table "tracks", force: true do |t|

@@ -6,7 +6,7 @@
       <th>Mbid</th>
       <th>Name</th>
       <th>Artist</th>
-      <th>Plays</th>
+      <th>URL</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
         <td><%= setlist.mbid %></td>
         <td><%= setlist.name %></td>
         <td><%= setlist.artist %></td>
-        <td><%= setlist.plays %></td>
+        <td><%= setlist.url_id %></td>
         <td><%= link_to 'Show', setlist %></td>
         <td><%= link_to 'Edit', edit_setlist_path(setlist) %></td>
         <td><%= link_to 'Destroy', setlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>

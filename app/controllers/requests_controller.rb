@@ -24,15 +24,15 @@ class RequestsController < ApplicationController
     @response = JSON.parse @response
     puts @response
     @response['setlists']['setlist'].each do |data|
-      setlist = Setlist.new(mbid: data["artist"]["@mbid"], name: "#{data["artist"]["@name"]}, #{data["venue"]["@name"]}, #{data["@eventDate"]}", URL: data["url"])
-      setlist.save
+      @setlist = Setlist.new(mbid: data["artist"]["@mbid"], name: "#{data["artist"]["@name"]}, #{data["venue"]["@name"]}, #{data["@eventDate"]}", artist: data["artist"]["@name"], url_id: data["url"])
+      @setlist.save
     end
 
 
     # @response = Response.headers.to_str
     # RestClient.post "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}", :artist => @name
      if @request.save
-       redirect_to @request
+       redirect_to @setlist
     else
       render :new
       flash[:error] = "Invalid request"
