@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Mbid</th>
       <th>Name</th>
       <th>Artist</th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @setlists.each do |setlist| %>
       <tr>
+        <td><%= setlist.id %></td>
         <td><%= setlist.mbid %></td>
         <td><%= setlist.name %></td>
         <td><%= setlist.artist %></td>

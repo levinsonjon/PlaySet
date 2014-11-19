@@ -19,7 +19,8 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    @artist = :artist
+    @artist = params[:request][:artist]
+    puts "artist is #{@artist}"
     @response = RestClient.get "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}"
     @response = JSON.parse @response
     puts @response
