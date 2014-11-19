@@ -1,13 +1,13 @@
 class RequestsController < ApplicationController
   require 'rest_client'
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :request, only: [:show, :edit, :update, :destroy]
 
   def index
     @requests = Request.all
   end
 
   def show
-    @request = Request.self
+    @request = Request.find(params[:id])
   end
 
   def new
@@ -21,8 +21,16 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @artist = :artist
     @response = RestClient.get "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}"
+    @response = JSON.parse @response
     puts @response
-    # Setlist.create(@response ("#{url}") => params[:setlist][:url])  
+    @response['setlists']['setlist'].each do |data|
+      setlist = Setlist.new(mbid: data["artist"]["@mbid"], name: "#{data["artist"]["@name"]}, #{data["venue"]["@name"]}, #{data["@eventDate"]}", URL: data["url"])
+      setlist.save
+    end
+
+
+    # @response = Response.headers.to_str
+    # RestClient.post "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}", :artist => @name
      if @request.save
        redirect_to @request
     else

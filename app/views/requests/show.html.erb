@@ -1,18 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Setlist:</strong>
-  <%= @request.setlist %>
+  <strong>artist:</strong>
+  <%= @request.artist %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @request.user %>
+  <strong>url:</strong>
+  <%= @request.URL %>
 </p>
-
 <p>
-  <strong>Request count:</strong>
-  <%= @request.request_count %>
+	<strong>Setlists:</strong>
+	<%= puts @response %>
 </p>
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
