@@ -6,7 +6,7 @@ class SetlistsController < ApplicationController
   end
 
   def show
-    # @setlist = Setlist.find()
+    @setlist = Setlist.find(params[:id])
   end
 
   def new
@@ -41,6 +41,6 @@ class SetlistsController < ApplicationController
     end
 
     def setlist_params
-      params.require(:setlist).permit(:tracks, :mbid, :name, :artist, :plays)
+      params.require(:setlist).permit(:tracks, :mbid, :name, :artist, :plays, :request_id)
     end
 end

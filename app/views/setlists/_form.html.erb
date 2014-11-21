@@ -11,7 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+<div class="field">
+    <%= f.label :artist %><br>
+    <%= f.text_field :artist %>
+  </div>
+ <!--  <div class="field">
     <%= f.label :mbid %><br>
     <%= f.text_field :mbid %>
   </div>
@@ -20,17 +25,13 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :artist %><br>
-    <%= f.text_field :artist %>
-  </div>
-  <div class="field">
     <%= f.label :plays %><br>
     <%= f.number_field :plays %>
   </div>
    <div class="field">
     <%= f.label :tracks %><br>
     <%= f.text_field :tracks %>
-  </div>
+  </div> -->
   <div class="actions">
     <%= f.submit %>
   </div>

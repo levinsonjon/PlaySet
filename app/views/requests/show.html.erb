@@ -6,12 +6,14 @@
 </p>
 
 <p>
-  <strong>url:</strong>
-  <%= @request.URL %>
+  <strong>URL:</strong>
+  <%= @request.url_id %>
 </p>
 <p>
 	<strong>Setlists:</strong>
-	<%= puts @response %>
+	<%= @request.setlists.each do |a| %>
+	<%= a.id %>	</br>
+	<% end %>
 </p>
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
