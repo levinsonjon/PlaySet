@@ -1,4 +1,5 @@
 checklist:
-validate whether "song" class is a hash or an array
-If array, loop over the array and create a track.new for each "@name"
-else run the single line track.new command
+
+create views that work for phish
+
+debug for other requests
