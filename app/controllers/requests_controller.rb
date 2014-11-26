@@ -36,15 +36,67 @@ class RequestsController < ApplicationController
       puts data["sets"]["set"]
       if data["sets"].kind_of?(Array)
       @setloop = data["sets"][0]
-      @setloop.each do |setdata|
-        @trackloop = data["sets"][setdata[0]]
-        @trackloop.each do |trackdata|
-          Track.new(name: trackdata["@name"], setlist_id: @setlist)
-          @track.save
-          @setlist.update_attributes(tracks: @track)
+        @setloop.each do |setdata|
+          @trackloop = data["sets"][setdata[0]]
+          @trackloop.each do |trackdata|
+            Track.new(name: trackdata["@name"], setlist_id: @setlist)
+            @track.save
+            @setlist.update_attributes(tracks: @track)
+          end
+        end
+      elsif data["sets"].kind_of?(Hash)
+      @setloop = data["sets"]["set"]
+
+        @setloop.each do |setdata|
+          puts "setdata is"
+          puts setdata
+          puts "********"
+          if setdata["song"].kind_of?(Array)
+            @trackloop = setdata["song"]
+            puts "********************"
+            puts "trackloop is"
+            puts @trackloop
+            puts "********************"
+            @trackloop.each do |trackdata|
+            puts "********************"
+            puts "trackdata is"
+            puts trackdata
+            puts "********************"
+              @track = Track.new(name: trackdata["@name"], setlist_id: @setlist)
+              puts "********************"
+              puts "@track is"
+              puts @track
+              puts "********************"
+              @track.save
+            end
+          else
+              @trackloop = setdata["song"]
+            puts "********************"
+            puts "trackloop is"
+            puts @trackloop
+            puts "********************"
+            @trackloop.each do |trackdata|
+            puts "********************"
+            puts "trackdata is"
+            puts trackdata
+            puts "********************"
+            @name = trackdata[0]
+            puts "********************"
+            puts "@name is"
+            puts @name
+            puts "********************"
+              @track = Track.new(name: @name, setlist_id: @setlist)
+              puts "********************"
+              puts "@track is"
+              puts @track
+              puts "********************"
+              @track.save
+            end
+          end
         end
       end
     end
+    @setlist.update_attribute(tracks: @track)
     # @request.update_attributes
 
     # @response = Response.headers.to_str
