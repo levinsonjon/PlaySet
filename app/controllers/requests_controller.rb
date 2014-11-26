@@ -91,12 +91,15 @@ class RequestsController < ApplicationController
               puts @track
               puts "********************"
               @track.save
+              @setlist.update_attribute(:track_id, @track)
+
             end
           end
         end
       end
+
     end
-    @setlist.update_attribute(tracks: @track)
+
     # @request.update_attributes
 
     # @response = Response.headers.to_str
