@@ -23,21 +23,37 @@ class RequestsController < ApplicationController
     puts "artist is #{@artist}"
     @response = RestClient.get "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}"
     @response = JSON.parse @response
-    puts @response
+    @request.save
     @response['setlists']['setlist'].each do |data|
       @setlist = Setlist.new(mbid: data["artist"]["@mbid"], name: "#{data["artist"]["@name"]}, #{data["venue"]["@name"]}, #{data["@eventDate"]}", artist: data["artist"]["@name"], url_id: data["url"], request_id: @request)
       @setlist.save
+      # puts "setlist id is #{@setlist_id}"
+      # puts "sets is #{data["sets"]}"
+      # puts "set is #{data["sets"]["set"]}"
+      # puts "song is #{data["sets"]["set"]["song"]}"
+      # puts "track name is #{data["sets"]["set"]["song"]["@name"]}"
+      puts "data sets 0 is"
+      puts data["sets"]["set"]
+      if data["sets"].kind_of?(Array)
+      @setloop = data["sets"][0]
+      @setloop.each do |setdata|
+        @trackloop = data["sets"][setdata[0]]
+        @trackloop.each do |trackdata|
+          Track.new(name: trackdata["@name"], setlist_id: @setlist)
+          @track.save
+          @setlist.update_attributes(tracks: @track)
+        end
+      end
     end
-
+    # @request.update_attributes
 
     # @response = Response.headers.to_str
     # RestClient.post "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}", :artist => @name
-     if @request.save
        redirect_to @request
-    else
-      render :new
-      flash[:error] = "Invalid request"
-    end
+    # else
+    #   render :new
+    #   flash[:error] = "Invalid request"
+    # end
   end
 
 
@@ -72,7 +88,7 @@ class RequestsController < ApplicationController
     # end
 
     def request_params
-      params.require(:request).permit(:artist, :setlist, :URL, :user, :count, )
+      params.require(:request).permit(:artist, :setlist, :user, :count)
      
     end
 

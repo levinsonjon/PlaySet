@@ -1,18 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>artist:</strong>
+  <strong>Artist:</strong>
   <%= @request.artist %>
 </p>
 
 <p>
-  <strong>URL:</strong>
-  <%= @request.url_id %>
-</p>
-<p>
 	<strong>Setlists:</strong>
 	<%= @request.setlists.each do |a| %>
-	<%= a.id %>	</br>
+	<%= a.name %>	</br>
 	<% end %>
 </p>
 
