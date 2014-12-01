@@ -25,5 +25,14 @@
   <%= @setlist.request_id %>
 </p>
 
+<p>
+  <strong>Tracks:</strong>
+  <%= @setlist.tracks.each do |a| %>
+  <a href="/tracks/<%=a.id%>"><%= a.name %></a>
+</br>
+  <% end %>
+</p>
+
+
 <%= link_to 'Edit', edit_setlist_path(@setlist) %> |
 <%= link_to 'Back', setlists_path %>
