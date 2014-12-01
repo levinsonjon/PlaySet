@@ -36,6 +36,7 @@ class RequestsController < ApplicationController
               @track = Track.new(name: trackdata["@name"], setlist_id: @setlist)
               @track.save
               @setlist.update_attribute(:track_id, @track)
+              @setlist.save
               puts "setlist is"
               puts @setlist.track_id
               puts "**********"
@@ -47,6 +48,7 @@ class RequestsController < ApplicationController
               @track = Track.new(name: @name, setlist_id: @setlist)
               @track.save
               @setlist.update_attribute(:track_id, @track)
+              @setlist.save
               puts "setlist is"
               puts @setlist.track_id
               puts "**********"
@@ -65,6 +67,7 @@ class RequestsController < ApplicationController
               puts @track
               puts "*******"
               @setlist.update_attribute(:track_id, @track)
+              @setlist.save
             end
           else
             @trackloop = setdata["song"]
@@ -76,6 +79,7 @@ class RequestsController < ApplicationController
               puts @track
               puts "*******"
               @setlist.update_attribute(:track_id, @track)
+              @setlist.save
               puts "setlist is"
               puts @setlist.track_id
               puts "**********"
