@@ -7,9 +7,14 @@
 
 <p>
 	<strong>Setlists:</strong>
-	<%= @request.setlists.each do |a| %>
-	<a href="/setlists/<%=a.id%>"><%= a.name %></a>
 </br>
+<% x = 1 %>
+	<% @request.setlists.each do |a| %>
+	<p>
+		<%= x %>.
+	<a href="/setlists/<%=a.id%>"><%= a.name %></a>
+	<% x = x + 1 %>
+	</p>
 	<% end %>
 </p>
 

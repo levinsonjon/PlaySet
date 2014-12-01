@@ -1,4 +1,7 @@
 class TrackController < ApplicationController
+   require 'rest_client'
+ before_action :track, only: [:show, :edit, :update, :destroy]
+
   def index
   	@tracks = Track.all
   end

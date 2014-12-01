@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'track/index'
 
   resources :requests
 
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  root 'requests#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
