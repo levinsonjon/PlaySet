@@ -1,3 +1,3 @@
 class Track < ActiveRecord::Base
-	belongs_to :setlists
+	belongs_to :setlist
 end

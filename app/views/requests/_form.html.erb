@@ -11,11 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :artist %><br>
-    <%= f.search_field :artist %>
+<span id = "search">
+  <div class="field" id="field" placeholder="Enter artist name" value="">
+  <%= f.search_field :artist %>
   </div>
-  <div class="actions">
+  <div class="actions" id="actions">
     <%= f.submit %>
   </div>
+</span>
 <% end %>

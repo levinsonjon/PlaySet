@@ -1,6 +1,4 @@
 class TracksController < ApplicationController
-   require 'rest_client'
- before_action :set_track, only: [:show, :edit, :update, :destroy]
 
   def index
   	@tracks = Track.all

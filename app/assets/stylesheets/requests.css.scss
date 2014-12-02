@@ -1,3 +1,39 @@
 // Place all the styles related to the Requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#header {
+	background-color: #81b71a;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    border-style: solid;
+    border-color: white;
+    border-left: 0;
+    border-right: 0;
+}
+
+#title {
+	color: white;
+	font-family: Tahoma;
+	position: center;
+}
+
+#body{
+	background-color: black;
+}
+
+#field {
+	float: center;
+}
+
+#subheader {
+	font-family: Tahoma;
+	color: white;
+	font-variant: small-caps;
+}
+
+#field {
+	border-radius: 4px;
+}
