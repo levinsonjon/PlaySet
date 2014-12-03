@@ -4,8 +4,9 @@
 
 
 #header {
+
 	background-color: #84bd00;
-	background-opacity: 50%;
+	opacity: 0.8;
     width: 100%;
     text-align: center;
     position: relative;
@@ -22,6 +23,9 @@
 }
 
 #body{
+	background-image: url(image_2.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
 	background-color: #333332;
 	color: white;
 }
