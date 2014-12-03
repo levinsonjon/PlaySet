@@ -27,7 +27,7 @@
 
 <p>
   <strong>Tracks:</strong>
-  <%= @setlist.tracks.each do |a| %>
+  <% @setlist.tracks.each do |a| %>
   <a href="/tracks/<%=a.id%>"><%= a.name %></a>
 </br>
   <% end %>

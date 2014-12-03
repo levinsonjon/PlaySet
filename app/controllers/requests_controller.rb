@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
   def edit
   end
 
-  def create
+   def create
     @request = Request.new(request_params)
     @artist = params[:request][:artist]
     @response = RestClient.get "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}"
@@ -58,7 +58,8 @@ class RequestsController < ApplicationController
       elsif data["sets"].kind_of?(Hash)
         @setloop = data["sets"]["set"]
         @setloop.each do |setdata|
-          if setdata["song"].kind_of?(Array)
+          if setdata[0].kind_of?(String)
+          elsif setdata["song"].kind_of?(Array)
             @trackloop = setdata["song"]
             @trackloop.each do |trackdata|
               @track = Track.new(name: trackdata["@name"], setlist_id: @setlist)

@@ -1,0 +1,29 @@
+<h1>Tracks List</h1>
+
+<table>
+  <thead>
+    <tr>
+    	<th>ID</th>
+      <th>Name</th>
+      <th>Setlist ID</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tracks.each do |track| %>
+      <tr>
+      	<td><%= track.id %></td>
+        <td><%= track.name %></td>
+        <td><%= track.setlist_id %></td>
+        <td><%= link_to 'Show', track %></td>
+        <td><%= link_to 'Edit', edit_track_path(track) %></td>
+        <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Request', new_request_path %>

@@ -4,7 +4,8 @@
 
 
 #header {
-	background-color: #81b71a;
+	background-color: #84bd00;
+	background-opacity: 50%;
     width: 100%;
     text-align: center;
     position: relative;
@@ -22,6 +23,7 @@
 
 #body{
 	background-color: black;
+	color: white;
 }
 
 #field {
@@ -34,6 +36,26 @@
 	font-variant: small-caps;
 }
 
-#field {
-	border-radius: 4px;
+#commit {
+	border-radius: 6px;
+	background-color: #0097bd;
+	color: white;
+}
+
+#request_artist {
+	border-radius: 10px;
+	border: none;
+}
+
+#show {
+	background-color: black;
+	color: white;
+
+}
+#loop {
+	color: white;
+}
+
+#artist {
+	font-size: 24px;
 }

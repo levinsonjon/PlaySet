@@ -1,18 +1,21 @@
+<body id="show">
+
+<%= link_to 'Home', new_request_path %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
+<p id="artist">
   <strong>Artist:</strong>
   <%= @request.artist %>
 </p>
 
 <p>
-	<strong>Setlists:</strong>
 </br>
 <% x = 1 %>
 	<% @request.setlists.each do |a| %>
 	<p>
 		<%= x %>.
-	<a href="/setlists/<%=a.id%>"><%= a.name %></a>
+	<a id="loop" href="/setlists/<%=a.id%>"><%= a.name %></a>
 	<% x = x + 1 %>
 	</p>
 	<% end %>
@@ -20,3 +23,4 @@
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>
+</body>

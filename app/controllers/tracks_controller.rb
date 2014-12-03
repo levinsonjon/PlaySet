@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+require 'rest_client'
 
   def index
   	@tracks = Track.all
@@ -6,6 +7,14 @@ class TracksController < ApplicationController
 
   def show
   @track = Track.find(params[:id])
+
+  # @response = RestClient.get "https://api.spotify.com/v1/search?q=#{@track.name}&type=track"
+  # @response = JSON.parse @response
+  # @spotifyURL = ""
+  # @responsebool = 0
+  # until @responsebool = 1
+  #   @response['tracks']['items'][0]['artists'][0]
+
   end
 
   def new
