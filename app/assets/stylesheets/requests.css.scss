@@ -22,7 +22,7 @@
 }
 
 #body{
-	background-color: black;
+	background-color: #333332;
 	color: white;
 }
 
@@ -45,17 +45,25 @@
 #request_artist {
 	border-radius: 10px;
 	border: none;
+	color: black;
 }
 
 #show {
-	background-color: black;
+	background-color: #333332;
 	color: white;
-
 }
+
 #loop {
 	color: white;
+	font-size: 16px;
 }
 
 #artist {
 	font-size: 24px;
+}
+
+#homebutton {
+	text-align: left;
+	color: white;
+	font-style: italic;
 }

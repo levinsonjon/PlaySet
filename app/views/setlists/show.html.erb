@@ -1,15 +1,29 @@
+<a id="homebutton" href="/requests/new">Home</a>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Mbid:</strong>
-  <%= @setlist.mbid %>
-</p>
+<body id="show">
 
 <p>
-  <strong>Name:</strong>
+  <strong>Setlist Name:</strong>
   <%= @setlist.name %>
 </p>
 
+<p>
+  <strong>Tracks:</strong>
+</br>
+<% x = 1 %>
+  <% @setlist.tracks.each do |a| %>
+  <p>
+      <%= x %>.
+  <a id="loop" href="/tracks/<%=a.id%>"><%= a.name %></a>
+<% x = x + 1 %>
+  </p>
+  <% end %>
+</p>
+</br>
+</br>
+</br>
 <p>
   <strong>Artist:</strong>
   <%= @setlist.artist %>
@@ -25,14 +39,14 @@
   <%= @setlist.request_id %>
 </p>
 
+
 <p>
-  <strong>Tracks:</strong>
-  <% @setlist.tracks.each do |a| %>
-  <a href="/tracks/<%=a.id%>"><%= a.name %></a>
-</br>
-  <% end %>
+  <strong>Mbid:</strong>
+  <%= @setlist.mbid %>
 </p>
 
 
 <%= link_to 'Edit', edit_setlist_path(@setlist) %> |
 <%= link_to 'Back', setlists_path %>
+
+</body>
