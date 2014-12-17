@@ -1,0 +1,39 @@
+<a id="homebutton" href="/requests/new">Home</a>
+
+<p id="notice"><%= notice %></p>
+
+<body id="show">
+
+<p>
+  <strong>Setlist Name:</strong>
+  <%= @setlist.name %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @setlist.artist %>
+</p>
+
+<p>
+  <strong>Tracks:</strong>
+</br>
+Ooops! Seems like there's no posted Setlist for this show!
+If you'd like to add one, help Setlist.fm out here! <%= @setlist.url_id %>
+</p>
+
+<p>
+  <strong>Request ID:</strong>
+  <%= @setlist.request_id %>
+</p>
+
+
+<p>
+  <strong>Mbid:</strong>
+  <%= @setlist.mbid %>
+</p>
+
+
+<%= link_to 'Edit', edit_setlist_path(@setlist) %> |
+<%= link_to 'Back', setlists_path %>
+
+</body>

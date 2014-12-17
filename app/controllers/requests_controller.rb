@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    
   end
 
   def new
@@ -20,7 +21,11 @@ class RequestsController < ApplicationController
    def create
     @request = Request.new(request_params)
     @artist = params[:request][:artist]
-    @response = RestClient.get "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{@artist}"
+    puts "@artist is"
+    puts @artist
+    puts "***********"
+    # @artist = CGI::@artist.gsub()
+    @response = RestClient.get "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=#{CGI::escape(@artist)}"
     @response = JSON.parse @response
     @request.save
     @response['setlists']['setlist'].each do |data|
